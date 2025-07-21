@@ -1,0 +1,53 @@
+.form-clear {
+    position: absolute;
+    top: 50%;
+    right: 50px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #aaa;
+    font-size: 1.2rem;
+    z-index: 10;
+}
+
+#nav-placeholder nav{
+    background-color: rgb(18, 73, 72);
+}
+
+.ui-autocomplete {
+    z-index: 10000 !important;
+    position: absolute;
+}
+
+#map {
+    height: 450px;
+}
+
+.leaflet-popup-content a {
+    text-decoration: none;
+}
+
+.bg-overlay {
+    position: relative;
+    text-align: center;
+    color: white;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bg-overlay::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 1;
+}
+
+.bg-overlay h1, p {
+    position: relative;
+    z-index: 2;
+}

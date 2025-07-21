@@ -1,0 +1,255 @@
+var map = L.map('map').setView([0.311, 32.5666], 13);
+
+var tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: `&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>`
+    }).addTo(map);
+
+// creates location button
+const customControl = L.Control.extend({
+    options: {
+        position: "topleft",
+        className: "locate-button leaflet-bar",
+        html: `<i class="fa fa-map-pin" aria-hidden="true"></i>
+        <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3A8.994 8.994 0 0 0 13 3.06V1h-2v2.06A8.994 8.994 0 0 0 3.06 11H1v2h2.06A8.994 8.994 0 0 0 11 20.94V23h2v-2.06A8.994 8.994 0 0 0 20.94 13H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>`,
+        style: 
+        "margin-top: 0; left: 0; display: flex; cursor: pointer; justify-content: center; font-size: 2rem;"
+    },
+
+    onAdd: function (map) {
+        this._map = map;
+        const button = L.DomUtil.create("div", this.options.className);
+
+        L.DomEvent.disableClickPropagation(button);
+
+        button.title = "Show My Location";
+        button.innerHTML = this.options.html;
+        button.className = this.options.className;
+        button.setAttribute("style", this.options.style);
+
+        L.DomEvent.on(button, "click", this._clicked, this);
+
+        return button;
+    },
+    _clicked: function (e) {
+        L.DomEvent.stopPropagation(e);
+
+        // this.removeLocate();
+
+        this._checkLocate();
+
+        return;
+    },
+    _checkLocate: function () {
+        return this._locateMap();
+    },
+
+    _locateMap: function () {
+        const locateActive = document.querySelector(".locate-button");
+        const locate = locateActive.classList.contains("locate-active");
+        // add/remove class from locate button
+        locateActive.classList[locate ? "remove" : "add"]("locate-active");
+
+        // removes class from button
+        // and stops watching location
+        if (locate) {
+            this.removeLocate();
+            this._map.stopLocate();
+            return;
+    }
+
+    // location on found
+    this._map.on("locationfound", this.onLocationFound, this);
+    // location on error
+    this._map.on("locationerror", this.onLocationError, this);
+
+    // start locate
+    this._map.locate({ setView: true, enableHighAccuracy: true });
+    },
+    onLocationFound: function (e) {
+        // add circle
+        this.addCircle(e).addTo(this.featureGroup()).addTo(map);
+
+        // add marker
+        this.addMarker(e).addTo(this.featureGroup()).addTo(map);
+
+        // add legend
+    },
+    // on location error
+    onLocationError: function (e) {
+        this.addLegend("Location access denied.");
+    },
+    // feature group
+    featureGroup: function () {
+        return new L.FeatureGroup();
+    },
+    // add legend
+    addLegend: function (text) {
+        const checkIfDescriotnExist = document.querySelector(".description");
+
+        if (checkIfDescriotnExist) {
+            checkIfDescriotnExist.textContent = text;
+            return;
+        }
+
+        const legend = L.control({ position: "bottomleft" });
+
+        legend.onAdd = function () {
+            let div = L.DomUtil.create("div", "description");
+            L.DomEvent.disableClickPropagation(div);
+            const textInfo = text;
+            div.insertAdjacentHTML("beforeend", textInfo);
+            return div;
+        };
+        legend.addTo(this._map);
+    },
+    addCircle: function ({ accuracy, latitude, longitude }) {
+        return L.circle([latitude, longitude], accuracy / 2, {
+            className: "circle-test",
+            weight: 2,
+            stroke: false,
+            fillColor: "#136aec",
+            fillOpacity: 0.15,
+        });
+    },
+    addMarker: function ({ latitude, longitude }) {
+        return L.marker([latitude, longitude], {
+        icon: L.divIcon({
+            className: "located-animation",
+            iconSize: L.point(17, 17),
+            popupAnchor: [0, -15],
+        }),
+        }).bindPopup("You are here!!!").openPopup();
+    },
+    removeLocate: function () {
+    this._map.eachLayer(function (layer) {
+            if (layer instanceof L.Marker) {
+                const { icon } = layer.options;
+                if (icon?.options.className === "located-animation") {
+                    map.removeLayer(layer);
+                }
+            }
+            if (layer instanceof L.Circle) {
+                if (layer.options.className === "circle-test") {
+                    map.removeLayer(layer);
+                }
+            }
+        });
+    },
+});
+
+// adding new button to map control
+map.addControl(new customControl());
+
+var markers = [];
+
+for (var i = 0; i < pharmacyData.length; i++) {
+    addMarker(pharmacyData[i]);
+}
+
+
+function addMarker(pharmacy) {
+    var marker = L.marker([pharmacy.latitude, pharmacy.longitude]).addTo(map);
+
+    var delivery = pharmacy.delivery_available === 'Yes'
+        ? `<span class="badge bg-success"><i class="fa fa-motorcycle" aria-hidden="true"></i> Delivery</span>`
+        : "";
+
+    var pharmacyImage = pharmacy.image_url
+        ? pharmacy.image_url
+        : "source/no-image.jpg";
+
+    var popupContent = `
+    <img src="${pharmacyImage}" width="250" height="144">
+    <a href="pharmacy_page.html?name=${encodeURIComponent(pharmacy.name)}"><h5>${pharmacy.name}</h5></a>
+    <br>
+    ${pharmacy.address}
+    <br>
+    <br>
+    ${delivery}`;
+    
+    marker.bindPopup(popupContent);
+    marker.pharmacyData = pharmacy; 
+
+    markers.push(marker);
+}
+
+const filterContainer = document.querySelector("#filter .accordion-body");
+
+generateButton();
+
+function generateButton() {
+    
+    const filterHTML =  `
+    <div class="row">
+        <div class="col">
+            <div class="form-control">
+                <label for="region"><b>Jump to region: </b></label>
+                <select name="region" id="region" onchange="selectRegion()">
+                    <option>All</option>
+                    <option value="Central Region">Central Region</option>
+                    <option value="Eastern Region">Eastern Region</option>
+                    <option value="Northern Region">Northern Region</option>
+                    <option value="Western Region">Western Region</option>
+                </select>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" name="item" role="switch" id="deliveryCheckbox"  value="Yes">
+                <label class="form-check-label" for="deliveryCheckbox"><i class="fa fa-motorcycle" aria-hidden="true"></i> Delivery available</label>
+            </div>
+        </div>
+    </div>
+    `
+    ;
+
+    filterContainer.insertAdjacentHTML("beforeend", filterHTML);
+
+
+    document.getElementById('deliveryCheckbox').addEventListener('change', filterMarkers);
+
+}
+
+function selectRegion() {
+    var selectedRegion = document.getElementById("region").value;
+
+    if (selectedRegion === "All") {
+        // Fit bounds to all markers if "All" is selected
+        var allLatLngs = markers.map(marker => marker.getLatLng());
+        var bounds = L.latLngBounds(allLatLngs);
+        map.fitBounds(bounds);
+        return;
+    }
+
+    // Filters markers in the selected region
+    var regionMarkers = markers.filter(marker => 
+        marker.pharmacyData.region === selectedRegion
+    );
+
+    // If no markers in region, don’t try to fit
+    if (regionMarkers.length === 0) return;
+
+    // Retrieves LatLngs of all matching markers
+    var regionLatLngs = regionMarkers.map(marker => marker.getLatLng());
+
+    // Createa bounds from those LatLngs
+    var regionBounds = L.latLngBounds(regionLatLngs);
+
+    // Fit map to those bounds
+    map.fitBounds(regionBounds);
+}
+
+function filterMarkers() {
+    const deliveryChecked = document.getElementById('deliveryCheckbox').checked;
+
+    markers.forEach(marker => {
+        const hasDelivery = marker.pharmacyData.delivery_available === 'Yes';
+
+        if (!deliveryChecked || hasDelivery) {
+            marker.addTo(map);
+        } else {
+            map.removeLayer(marker);
+        }
+    });
+}
