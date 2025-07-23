@@ -12,8 +12,8 @@ const customControl = L.Control.extend({
         className: "locate-button leaflet-bar",
         html: `<i class="fa fa-map-pin" aria-hidden="true"></i>
         <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3A8.994 8.994 0 0 0 13 3.06V1h-2v2.06A8.994 8.994 0 0 0 3.06 11H1v2h2.06A8.994 8.994 0 0 0 11 20.94V23h2v-2.06A8.994 8.994 0 0 0 20.94 13H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>`,
-        style: 
-        "margin-top: 0; left: 0; display: flex; cursor: pointer; justify-content: center; font-size: 2rem;"
+        style:
+        "margin-top: 0; left: 0; display: flex; cursor: pointer; justify-content: center; font-size: 24px;",
     },
 
     onAdd: function (map) {
@@ -181,11 +181,10 @@ generateButton();
 function generateButton() {
     
     const filterHTML =  `
-    <div class="row">
-        <div class="col">
-            <div class="form-control">
-                <label for="region"><b>Jump to region: </b></label>
-                <select name="region" id="region" onchange="selectRegion()">
+    <div class="row g-3">
+            <div class="col-auto">
+                <label for="region" class="form-label"><b>Jump to region: </b></label>
+                <select class="form-select" name="region" id="region" onchange="zoomToRegion()">
                     <option>All</option>
                     <option value="Central Region">Central Region</option>
                     <option value="Eastern Region">Eastern Region</option>
@@ -193,7 +192,15 @@ function generateButton() {
                     <option value="Western Region">Western Region</option>
                 </select>
             </div>
+            <div class="col-auto" id="district-wrapper" style="display: none;">
+                <label for="district" class="form-label"><b>District </b></label>
+                <select class="form-select" name="district" id="district">
+                    <option value="">Select a district...</option>
+                </select>
+            </div>
         </div>
+    </div>
+    <div class="row mt-2">
         <div class="col">
             <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" name="item" role="switch" id="deliveryCheckbox"  value="Yes">
@@ -201,42 +208,79 @@ function generateButton() {
             </div>
         </div>
     </div>
-    `
-    ;
+    `;
 
     filterContainer.insertAdjacentHTML("beforeend", filterHTML);
 
-
+    document.getElementById("region").addEventListener("change", handleRegionChange);
+    document.getElementById("district-wrapper").addEventListener("change", handleDistrictChange);
     document.getElementById('deliveryCheckbox').addEventListener('change', filterMarkers);
 
 }
 
-function selectRegion() {
-    var selectedRegion = document.getElementById("region").value;
+function handleRegionChange(event) {
+    
+    const selectedRegion = event.target.value;
+    const districtDropdown = document.getElementById("district");
 
-    if (selectedRegion === "All") {
-        // Fit bounds to all markers if "All" is selected
-        var allLatLngs = markers.map(marker => marker.getLatLng());
-        var bounds = L.latLngBounds(allLatLngs);
+    const districtsByRegion = {
+        "Central Region": ["Kampala", "Wakiso", "Mukono", "Masaka"],
+        "Eastern Region": ["Jinja", "Mbale", "Soroti", "Busia"],
+        "Northern Region": ["Gulu","Lira","Arua"],
+        "Western Region": ["Hoima", "Mbarara", "Kabarole"]
+    }
+
+
+    districtDropdown.innerHTML = '<option value="">Select a district...</option>';
+
+    if (districtsByRegion[selectedRegion]) {
+        document.getElementById("district-wrapper").style.display = 'block';
+
+        
+        districtsByRegion[selectedRegion].forEach(district => {
+            const option = new Option(district, district);
+            districtDropdown.add(option);
+        });
+
+        zoomToRegion(selectedRegion);
+    } else {
+        document.getElementById("district-wrapper").style.display = "none";
+        zoomToRegion("All");
+    }
+}
+
+function handleDistrictChange(event) {
+    
+    const selectedDistrict = event.target.value;
+
+    if (!selectedDistrict) return; 
+    const districtMarkers = markers.filter(marker =>
+        marker.pharmacyData.district === selectedDistrict
+    );
+
+    if (districtMarkers.length === 0) return;
+
+    const districtLatLngs = districtMarkers.map(marker => marker.getLatLng());
+    const districtBounds = L.latLngBounds(districtLatLngs);
+    map.fitBounds(districtBounds);
+}
+
+function zoomToRegion(region) {
+    if (region === "All") {
+        const allLatLngs = markers.map(marker => marker.getLatLng());
+        const bounds = L.latLngBounds(allLatLngs);
         map.fitBounds(bounds);
         return;
     }
 
-    // Filters markers in the selected region
-    var regionMarkers = markers.filter(marker => 
-        marker.pharmacyData.region === selectedRegion
+    const regionMarkers = markers.filter(marker =>
+        marker.pharmacyData.region === region
     );
 
-    // If no markers in region, don’t try to fit
     if (regionMarkers.length === 0) return;
 
-    // Retrieves LatLngs of all matching markers
-    var regionLatLngs = regionMarkers.map(marker => marker.getLatLng());
-
-    // Createa bounds from those LatLngs
-    var regionBounds = L.latLngBounds(regionLatLngs);
-
-    // Fit map to those bounds
+    const regionLatLngs = regionMarkers.map(marker => marker.getLatLng());
+    const regionBounds = L.latLngBounds(regionLatLngs);
     map.fitBounds(regionBounds);
 }
 

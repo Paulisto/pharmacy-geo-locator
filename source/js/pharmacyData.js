@@ -143,8 +143,8 @@ var pharmacyData = [
         image_url: "https://lh3.googleusercontent.com/p/AF1QipPUuG8ErnJNMo-vLpK10YpXH4ZvSWSnL0QIykv-=s1360-w1360-h1020-rw",
         address: "KAY Plaza, Lukuli Road, Buziga Road",
         phone_number: "0755958763",
-        latitude: 0.2692565569637802,
-        longitude: 32.61802412594433,
+        latitude: 0.268478,
+        longitude: 32.614267,
         district: "Kampala",
         region: "Central Region",
         delivery_available: "Yes"
@@ -154,8 +154,8 @@ var pharmacyData = [
         name: "Friecca Pharmacy Ntinda",
         address: "Ntinda Shopping Complex, Plot 13 Ntinda - Kisaasi Rd, Kampala",
         phone_number: "0781065024",
-        latitude: 0.3563821008375751, 
-        longitude: 32.61341731992482,
+        latitude: 0.35634991531224625, 
+        longitude: 32.61369627430078,
         district: "Kampala",
         region: "Central Region",
         delivery_available: "Yes"
