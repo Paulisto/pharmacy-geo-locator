@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const selectedpharmacyDistrict = pharmacyData.find(pharmacy => pharmacy.district);
     const selectedpharmacyRegion = pharmacyData.find(pharmacy => pharmacy.region);
     const selectedPharmacyAddress = pharmacyData.find(pharmacy => pharmacy.address);
-    const selectedPharmacyPhone = pharmacyData.find(pharmacy => pharmacy.phone_number)
+    const selectedPharmacyPhone = pharmacyData.find(pharmacy => pharmacy.phone_number);
 
      
     // Finds the pharmacy in the data
@@ -44,7 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const headerHTML = `
     <div>
         <h1>${selectedPharmacy.name}</h1>
-        <p>${selectedPharmacy.district}, ${selectedPharmacy.region}</p>
+        <p><a class="link-light" href="district.html?district=${encodeURIComponent(selectedPharmacy.district)}">${selectedPharmacy.district}</a>, ${selectedPharmacy.region} 
+        </p>
     </div>
     `;
     header.insertAdjacentHTML('beforeend', headerHTML);

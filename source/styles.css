@@ -70,3 +70,9 @@
     position: relative;
     z-index: 2;
 }
+
+
+#district-map {
+    height: 500px;
+    border-radius: 10px;
+}
