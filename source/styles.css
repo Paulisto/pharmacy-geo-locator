@@ -26,8 +26,9 @@
     text-decoration: none;
 }
 
-.locate-active {
-  fill: blue;
+.locate-button.locate-active {
+    background-color: #dcdcdc;
+    color: #09659e;
 }
 
 .locate-button {
@@ -43,6 +44,28 @@
     border: none;
     border-radius: 4px;
     box-shadow: 0 1px 5px rgb(0 0 0 / 65%);
+}
+
+.located-animation {
+    width: 17px;
+    height: 17px;
+    background: blue;
+    border: 3px solid #6495ED;
+    border-radius: 50%;
+    box-shadow: 0 0 0 rgba(19, 106, 236, 0.4);
+    animation: pulse 1.5s ease-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(19, 106, 236, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(19, 106, 236, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(19, 106, 236, 0);
+  }
 }
 
 .bg-overlay {
