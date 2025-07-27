@@ -7,6 +7,15 @@ var pharmacyData = [
         latitude: 0.331606,
         longitude: 32.573747,
         district: "Kampala",
+        working_hours: {
+            Monday: ["08:00", "23:59"],
+            Tuesday: ["08:00", "23:59"],
+            Wednesday: ["08:00", "23:59"],
+            Thursday: ["08:00", "23:59"],
+            Friday: ["08:00", "23:59"],
+            Saturday: ["08:00", "23:59"],
+            Sunday: ["08:00", "23:59"],
+        },
         region: "Central Region",
         delivery_available: "Yes"
     },
@@ -19,6 +28,7 @@ var pharmacyData = [
         latitude: 0.330920,
         longitude: 32.574066,
         district: "Kampala",
+        open24_7: true, 
         region: "Central Region",
         delivery_available: "Yes"
     },
@@ -31,6 +41,7 @@ var pharmacyData = [
         latitude:  0.3324000,
         longitude:  32.5733733,
         district: "Kampala",
+        open24_7: true,
         region: "Central Region",
         delivery_available: "Yes"
     },
@@ -43,6 +54,15 @@ var pharmacyData = [
         latitude:  0.3311277,
         longitude: 32.5744945,
         district: "Kampala",
+        working_hours: {
+            Monday: ["06:30", "23:59"],
+            Tuesday: ["06:30", "23:59"],
+            Wednesday: ["06:30", "23:59"],
+            Thursday: ["06:30", "23:59"],
+            Friday: ["06:30", "23:59"],
+            Saturday: ["06:30", "23:59"],
+            Sunday: ["07:30", "23:00"],
+        },
         region: "Central Region",
         delivery_available: "Yes"
     },
@@ -66,6 +86,15 @@ var pharmacyData = [
         latitude: 0.338309,
         longitude: 32.563167,
         district: "Kampala",
+        working_hours: {
+            Monday: ["08:00", "23:30"],
+            Tuesday: ["08:00", "23:30"],
+            Wednesday: ["08:00", "23:30"],
+            Thursday: ["08:00", "23:30"],
+            Friday: ["08:00", "23:30"],
+            Saturday: ["08:00", "23:30"],
+            Sunday: ["08:00", "23:30"],
+        },
         region: "Central Region",
         delivery_available: "No"
     },
@@ -87,6 +116,7 @@ var pharmacyData = [
         latitude: 1.715677,
         longitude: 33.620739,
         district: "Soroti",
+        open24_7: true,
         region: "Eastern Region",
         delivery_available: "Yes"
     },
@@ -99,6 +129,15 @@ var pharmacyData = [
         latitude: 0.3364915,
         longitude: 32.5876425,
         district: "Kampala",
+        working_hours: {
+            Monday: ["08:00", "22:00"],
+            Tuesday: ["08:00", "22:00"],
+            Wednesday: ["08:00", "22:00"],
+            Thursday: ["08:00", "22:00"],
+            Friday: ["08:00", "22:00"],
+            Saturday: ["08:00", "22:00"],
+            Sunday: ["09:30", "21:00"],
+        },
         region: "Central Region",
         delivery_available: "Yes"
     },
@@ -111,6 +150,35 @@ var pharmacyData = [
         latitude: 0.29853325874352515, 
         longitude: 32.599124915687106,
         district: "Kampala",
+        working_hours: {
+            Monday: ["08:00", "22:00"],
+            Tuesday: ["08:00", "22:00"],
+            Wednesday: ["08:00", "22:00"],
+            Thursday: ["08:00", "22:00"],
+            Friday: ["08:00", "22:00"],
+            Saturday: ["08:00", "22:00"],
+            Sunday: ["09:30", "21:00"],
+        },
+        region: "Central Region",
+        delivery_available: "Yes"
+    },
+
+    {
+        name: "C&A Pharmacy Bugolobi Branch",
+        address: "Plot 69, 71 Spring Rd, Kampala",
+        phone_number: "0777 099236",
+        latitude: 0.319257, 
+        longitude: 32.623537,
+        district: "Kampala",
+        working_hours: {
+            Monday: ["08:00", "22:00"],
+            Tuesday: ["08:00", "22:00"],
+            Wednesday: ["08:00", "22:00"],
+            Thursday: ["08:00", "22:00"],
+            Friday: ["08:00", "22:00"],
+            Saturday: ["08:00", "22:00"],
+            Sunday: ["09:30", "21:00"],
+        },
         region: "Central Region",
         delivery_available: "Yes"
     },
@@ -122,6 +190,7 @@ var pharmacyData = [
         latitude: 0.266396,
         longitude: 32.625390,
         district: "Kampala",
+        open24_7: true,
         region: "Central Region",
         delivery_available: "Yes"
     },
@@ -134,6 +203,15 @@ var pharmacyData = [
         latitude: 0.2620489167625628, 
         longitude: 32.61802658314924,
         district: "Kampala",
+        working_hours: {
+            Monday: ["08:00", "20:00"],
+            Tuesday: ["08:00", "20:00"],
+            Wednesday: ["08:00", "20:00"],
+            Thursday: ["08:00", "20:00"],
+            Friday: ["08:00", "20:00"],
+            Saturday: ["08:00", "20:00"],
+            Sunday: "Closed",
+        },
         region: "Central Region",
         delivery_available: "Yes"
     },
@@ -146,6 +224,15 @@ var pharmacyData = [
         latitude: 0.268478,
         longitude: 32.614267,
         district: "Kampala",
+        working_hours: {
+            Monday: ["07:30", "23:30"],
+            Tuesday: ["07:30", "23:30"],
+            Wednesday: ["07:30", "23:30"],
+            Thursday: ["07:30", "23:30"],
+            Friday: ["07:30", "23:30"],
+            Saturday: ["07:30", "23:30"],
+            Sunday: ["09:30", "22:00"],
+        },
         region: "Central Region",
         delivery_available: "Yes"
     }, 
@@ -157,6 +244,15 @@ var pharmacyData = [
         latitude: 0.35634991531224625, 
         longitude: 32.61369627430078,
         district: "Kampala",
+        working_hours: {
+            Monday: ["06:30", "23:59"],
+            Tuesday: ["06:30", "23:59"],
+            Wednesday: ["06:30", "23:59"],
+            Thursday: ["06:30", "23:59"],
+            Friday: ["06:30", "23:59"],
+            Saturday: ["06:30", "23:59"],
+            Sunday: ["07:30", "23:00"],
+        },
         region: "Central Region",
         delivery_available: "Yes"
     },
@@ -168,6 +264,7 @@ var pharmacyData = [
         latitude: 0.40891084228131275, 
         longitude: 32.642422335279996,
         district: "Wakiso",
+        open24_7: true,
         region: "Central Region",
         delivery_available: "Yes"
     },
@@ -178,8 +275,17 @@ var pharmacyData = [
         address: "Naalya Mogas Fuel Station, Kyaliwajjala-Naalya Rd, Kampala",
         latitude: 0.3636944, 
         longitude: 32.6357192,
-        region: "Central Region",
         district: "Kampala",
+        working_hours: {
+            Monday: ["09:00", "21:00"],
+            Tuesday: ["09:00", "21:00"],
+            Wednesday: ["09:00", "21:00"],
+            Thursday: ["09:00", "21:00"],
+            Friday: ["09:00", "21:00"],
+            Saturday: ["09:00", "21:00"],
+            Sunday: ["09:00", "21:00"],
+        },
+        region: "Central Region",
         delivery_available: "Yes"
     },
 
@@ -189,6 +295,15 @@ var pharmacyData = [
         latitude: 0.313608, 
         longitude: 32.577449,
         district: "Kampala",
+        working_hours: {
+            Monday: ["08:00", "23:00"],
+            Tuesday: ["09:00", "23:00"],
+            Wednesday: ["09:00", "23:00"],
+            Thursday: ["09:00", "23:00"],
+            Friday: ["09:00", "23:00"],
+            Saturday: ["06:30", "23:00"],
+            Sunday: ["07:30", "23:00"],
+        },
         region: "Central Region",
         delivery_available: "Yes"
     },
@@ -201,6 +316,7 @@ var pharmacyData = [
         latitude: 0.3400922, 
         longitude: 32.5737426,
         district: "Kampala",
+        open24_7: true,
         region: "Central Region",
         delivery_available: "Yes"
     },
@@ -211,8 +327,17 @@ var pharmacyData = [
         phone_number: "0776515700",
         latitude: 0.3615521, 
         longitude: 32.6206198,
-        region: "Central Region",
-        district: "Kampala"
+        district: "Kampala",
+        working_hours: {
+            Monday: ["08:00", "22:00"],
+            Tuesday: ["08:00", "22:00"],
+            Wednesday: ["08:00", "22:00"],
+            Thursday: ["08:00", "22:00"],
+            Friday: ["08:00", "22:00"],
+            Saturday: ["08:00", "22:00"],
+            Sunday: ["08:00", "22:00"],
+        },
+        region: "Central Region"
     },
     
 
@@ -224,17 +349,35 @@ var pharmacyData = [
         latitude: 0.3402539, 
         longitude: 32.5737867,
         district: "Kampala",
+        working_hours: {
+            Monday: ["07:00", "23:00"],
+            Tuesday: ["07:00", "23:00"],
+            Wednesday: ["07:00", "23:00"],
+            Thursday: ["07:00", "23:00"],
+            Friday: ["08:00", "22:00"],
+            Saturday: ["08:00", "22:00"],
+            Sunday: ["08:00", "22:00"],
+        },
         region: "Central Region",
         delivery_available: "Yes"
     },
 
     {
         name: "Hawa Pharmacy, Entebbe",
-        address: "3F6C+FPG, Entebbe",
+        address: "31a Kiwafu Rd, Entebbe",
         phone_number: "0414322865",
         latitude: 0.0611736,
         longitude: 32.4718726,
         district: "Wakiso",
+        working_hours: {
+            Monday: ["08:00", "22:00"],
+            Tuesday: ["08:00", "22:00"],
+            Wednesday: ["08:00", "22:00"],
+            Thursday: ["08:00", "22:00"],
+            Friday: ["08:00", "22:00"],
+            Saturday: ["08:00", "22:00"],
+            Sunday: ["08:00", "22:00"],
+        },
         region: "Central Region",
         delivery_available: "Yes"
     },
@@ -246,6 +389,15 @@ var pharmacyData = [
         latitude: 0.44110018436143383, 
         longitude: 33.212455097177724,
         district: "Jinja",
+        working_hours: {
+            Monday: ["08:00", "23:00"],
+            Tuesday: ["08:00", "23:00"],
+            Wednesday: ["08:00", "23:00"],
+            Thursday: ["08:00", "23:00"],
+            Friday: ["08:00", "23:00"],
+            Saturday: ["08:00", "23:00"],
+            Sunday: ["07:30", "21:00"],
+        },
         region: "Eastern Region"
     },
 
@@ -256,6 +408,15 @@ var pharmacyData = [
         latitude: 0.4707116581291489,
         longitude: 33.21670174516191,
         district: "Jinja",
+        working_hours: {
+            Monday: ["08:00", "22:00"],
+            Tuesday: ["08:00", "22:00"],
+            Wednesday: ["08:00", "22:00"],
+            Thursday: ["08:00", "22:00"],
+            Friday: ["08:00", "22:00"],
+            Saturday: ["08:00", "22:00"],
+            Sunday: ["08:00", "22:00"],
+        },
         region: "Eastern Region"
     },
 
@@ -280,6 +441,15 @@ var pharmacyData = [
         latitude: 0.3479573154860677,
         longitude: 32.65083317618101,
         district: "Kampala",
+        working_hours: {
+            Monday: ["07:30", "23:00"],
+            Tuesday: ["07:30", "23:00"],
+            Wednesday: ["07:30", "23:00"],
+            Thursday: ["07:30", "23:00"],
+            Friday: ["07:30", "23:00"],
+            Saturday: ["07:30", "23:00"],
+            Sunday: ["08:00", "22:00"]
+        },
         region: "Central Region"
     },
 
@@ -289,6 +459,15 @@ var pharmacyData = [
         latitude: 1.4309892627683363, 
         longitude: 31.356169058947224,
         district: "Hoima",
+        working_hours: {
+            Monday: ["07:00", "23:59"],
+            Tuesday: ["07:00", "23:59"],
+            Wednesday: ["07:00", "23:59"],
+            Thursday: ["07:00", "23:59"],
+            Friday: ["07:00", "23:59"],
+            Saturday: ["07:00", "23:59"],
+            Sunday: ["07:00", "23:59"]
+        },
         region: "Western Region",
         delivery_available: "Yes"
     },
@@ -299,16 +478,35 @@ var pharmacyData = [
         latitude: 1.4309155, 
         longitude: 31.3528828,
         district: "Hoima",
+        working_hours: {
+            Monday: ["08:00", "17:00"],
+            Tuesday: ["08:00", "17:00"],
+            Wednesday: ["08:00", "17:00"],
+            Thursday: ["08:00", "17:00"],
+            Friday: ["08:00", "17:00"],
+            Saturday: ["08:00", "17:00"],
+            Sunday: "Closed",
+        },
         region: "Western Region",
         delivery_available: "No"
     },
 
     {
         name: "3Doc Pharmacy",
+        image_url: "https://lh3.googleusercontent.com/p/AF1QipPSZv5FZO-0o_n3GoDy7L3vx-XaImouK9RThIfE=w426-h240-k-no",
         address: "Opposite Total Petrol station, Hoima Main Street, Hoima",
         latitude: 1.4303865393081334, 
         longitude: 31.354640691524406,
         district: "Hoima",
+        working_hours: {
+            Monday: ["07:30", "00:30"],
+            Tuesday: ["07:30", "00:30"],
+            Wednesday: ["07:30", "00:30"],
+            Thursday: ["07:30", "00:30"],
+            Friday: ["07:30", "00:30"],
+            Saturday: ["07:30", "00:30"],
+            Sunday: ["08:00", "00:30"]
+        },
         region: "Western Region",
         delivery_available: "Yes"
     },
@@ -330,6 +528,15 @@ var pharmacyData = [
         latitude: 0.31300220292553976, 
         longitude: 32.579895058986686,
         district: "Kampala",
+        working_hours: {
+            Monday: ["08:30", "23:00"],
+            Tuesday: ["08:30", "23:00"],
+            Wednesday: ["08:30", "23:00"],
+            Thursday: ["08:30", "23:00"],
+            Friday: ["08:30", "23:00"],
+            Saturday: ["08:30", "23:00"],
+            Sunday: ["08:30", "23:00"]
+        },
         region: "Central Region",
         delivery_available: "Yes"
     },
@@ -342,6 +549,15 @@ var pharmacyData = [
         latitude: 0.09826205977290646,
         longitude: 32.50771765144922,
         district: "Wakiso",
+        working_hours: {
+            Monday: ["07:00", "23:00"],
+            Tuesday: ["07:00", "23:00"],
+            Wednesday: ["07:00", "23:00"],
+            Thursday: ["07:00", "23:00"],
+            Friday: ["07:00", "23:00"],
+            Saturday: ["07:00", "23:00"],
+            Sunday: ["07:00", "23:00"]
+        },
         region: "Central Region",
         delivery_available: "Yes"
     },
@@ -354,6 +570,15 @@ var pharmacyData = [
         latitude: 0.3142477784588802,
         longitude: 32.577392330743535,
         district: "Kampala",
+        working_hours: {
+            Monday: ["09:00", "19:00"],
+            Tuesday: ["09:00", "19:00"],
+            Wednesday: ["09:00", "19:00"],
+            Thursday: ["09:00", "19:00"],
+            Friday: ["09:00", "19:00"],
+            Saturday: ["09:00", "18:00"],
+            Sunday: "Closed"
+        },
         region: "Central Region",
         delivery_available: "Yes"
     },
@@ -366,6 +591,15 @@ var pharmacyData = [
         latitude: 0.6558766192108307, 
         longitude: 30.27668942698492,
         district: "Kabarole",
+        working_hours: {
+            Monday: ["07:00", "23:59"],
+            Tuesday: ["07:00", "23:59"],
+            Wednesday: ["07:00", "23:59"],
+            Thursday: ["07:00", "23:59"],
+            Friday: ["07:00", "23:59"],
+            Saturday: ["07:00", "23:59"],
+            Sunday: ["07:00", "23:59"],
+        },
         region: "Western Region",
         delivery_available: "Yes"
     },
@@ -378,6 +612,15 @@ var pharmacyData = [
         latitude: 0.31308761535403734, 
         longitude: 32.57397706319922,
         district: "Kampala",
+        working_hours: {
+            Monday: ["07:00", "22:30"],
+            Tuesday: ["07:00", "22:30"],
+            Wednesday: ["07:00", "22:30"],
+            Thursday: ["07:00", "22:30"],
+            Friday: ["07:00", "22:30"],
+            Saturday: ["07:00", "22:30"],
+            Sunday: ["07:00", "20:30"],
+        },
         region: "Central Region",
         delivery_available: "Yes"
     },
@@ -400,6 +643,15 @@ var pharmacyData = [
         latitude: 2.2399283, 
         longitude: 32.8889083,
         district: "Lira",
+        working_hours: {
+            Monday: ["06:00", "23:59"],
+            Tuesday: ["06:00", "23:59"],
+            Wednesday: ["06:00", "23:59"],
+            Thursday: ["06:00", "23:59"],
+            Friday: ["06:00", "23:59"],
+            Saturday: ["06:00", "23:59"],
+            Sunday: ["06:00", "23:59"],
+        },
         region: "Northern Region",
         delivery_available: "Yes"
     },
@@ -421,6 +673,15 @@ var pharmacyData = [
         latitude: 2.24263,
         longitude: 32.89686,
         district: "Lira",
+        working_hours: {
+            Monday: ["08:00", "18:00"],
+            Tuesday: ["08:00", "18:00"],
+            Wednesday: ["08:00", "18:00"],
+            Thursday: ["08:00", "18:00"],
+            Friday: ["08:00", "18:00"],
+            Saturday: ["08:00", "18:00"],
+            Sunday: "Closed",
+        },
         region: "Northern Region",
         delivery_available: "Yes"
     },
@@ -433,6 +694,7 @@ var pharmacyData = [
         latitude: 2.77475, 
         longitude: 32.30017,
         district: "Gulu",
+        open24_7: true,
         region: "Northern Region",
         delivery_available: "Yes"
     },
@@ -444,6 +706,7 @@ var pharmacyData = [
         latitude: 0.09148474051397675, 
         longitude: 32.49762895634583,
         district: "Wakiso",
+        open24_7: true,
         region: "Central Region",
         delivery_available: "No"
     },
@@ -455,6 +718,15 @@ var pharmacyData = [
         latitude: -0.3425954757390343,
         longitude: 31.737303372781486,
         district: "Masaka",
+        working_hours: {
+            Monday: ["08:00", "22:00"],
+            Tuesday: ["08:00", "22:00"],
+            Wednesday: ["08:00", "22:00"],
+            Thursday: ["08:00", "22:00"],
+            Friday: ["08:00", "22:00"],
+            Saturday: ["08:00", "22:00"],
+            Sunday: ["08:00", "22:00"],
+        },
         region: "Central Region",
         delivery_available: "Yes"
     },
@@ -467,6 +739,15 @@ var pharmacyData = [
         latitude: 3.023745,
         longitude: 30.910217,
         district: "Arua",
+        working_hours: {
+            Monday: ["08:00", "18:00"],
+            Tuesday: ["08:00", "18:00"],
+            Wednesday: ["08:00", "18:00"],
+            Thursday: ["08:00", "18:00"],
+            Friday: ["08:00", "18:00"],
+            Saturday: ["08:00", "18:00"],
+            Sunday: ["08:00", "14:00"],
+        },
         region: "Northern Region",
         delivery_available: "No"
     },
@@ -478,6 +759,15 @@ var pharmacyData = [
         latitude: 3.001492,
         longitude: 30.912508,
         district: "Arua",
+        working_hours: {
+            Monday: ["06:30", "22:00"],
+            Tuesday: ["06:30", "22:00"],
+            Wednesday: ["06:30", "22:00"],
+            Thursday: ["06:30", "22:00"],
+            Friday: ["06:30", "22:00"],
+            Saturday: ["06:30", "22:00"],
+            Sunday: ["06:30", "22:00"],
+        },
         region: "Northern Region",
         delivery_available: "Yes"
     },
@@ -490,18 +780,28 @@ var pharmacyData = [
         latitude: 0.35932,
         longitude: 32.74989,
         district: "Mukono",
+        working_hours: {
+            Monday: ["06:30", "22:00"],
+            Tuesday: ["06:30", "22:00"],
+            Wednesday: ["06:30", "22:00"],
+            Thursday: ["06:30", "22:00"],
+            Friday: ["06:30", "22:00"],
+            Saturday: ["06:30", "22:00"],
+            Sunday: ["06:30", "22:00"],
+        },
         region: "Central Region",
         delivery_available: "Yes"
     },
 
     {
-        name: "Mawagola Pharmacy Masaka",
+        name: "Mawogola Pharmacy Masaka",
         image_url: "https://lh3.googleusercontent.com/p/AF1QipNeP6ga-dUmS2ahNZzl2MFVEwboVBbPpx8qoeu_=s1360-w1360-h1020-rw",
         address: "Opposite UEDCL Offices, Broadway Road, Masaka",
         phone_number: "0745976965",
         latitude: -0.3385768205246971,
         longitude: 31.739215863177495,
         district: "Masaka",
+        open24_7: true,
         region: "Central Region",
         delivery_available: "Yes"
     },
@@ -512,6 +812,7 @@ var pharmacyData = [
         latitude: 0.465798,
         longitude: 34.090893,
         district: "Busia",
+        open24_7: true,
         region: "Eastern Region",
         delivery_available: "No"
     },
@@ -523,6 +824,15 @@ var pharmacyData = [
         latitude: 0.467408,
         longitude: 34.087112,
         district: "Busia",
+        working_hours: {
+            Monday: ["08:00", "21:00"],
+            Tuesday: ["08:00", "21:00"],
+            Wednesday: ["08:00", "21:00"],
+            Thursday: ["08:00", "21:00"],
+            Friday: ["08:00", "21:00"],
+            Saturday: ["08:00", "21:00"],
+            Sunday: ["08:00", "21:00"],
+        },
         region: "Eastern Region",
         delivery_available: "no"
     }
