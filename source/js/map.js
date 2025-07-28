@@ -159,14 +159,29 @@ function addMarker(pharmacy) {
         ? pharmacy.image_url
         : "source/no-image.jpg";
 
+    var isOpenSpan = "";  
+
+    if (pharmacy.open24_7 === true) {
+        isOpenSpan = `<span class="text-success"><i class="fa fa-clock-o" aria-hidden="true"></i> Open 24/7</span>`;
+    } else {
+        const openStatus = isPharmacyOpen(pharmacy);
+        if (openStatus === true) {
+            isOpenSpan = `<span class="text-success"><i class="fa fa-clock-o" aria-hidden="true"></i> Open now</span>`;
+        } else if (openStatus === false) {
+            isOpenSpan = `<span class="textdanger"><i class="fa fa-clock-0" aria-hidden="true"></i> Closed</span>`;
+        }
+        // if openStatus is null, it will show nothing
+    }
+
     var popupContent = `
-    <img src="${pharmacyImage}" width="250" height="144">
-    <a href="pharmacy_page.html?name=${encodeURIComponent(pharmacy.name)}"><h5>${pharmacy.name}</h5></a>
-    <br>
-    ${pharmacy.address}
-    <br>
-    <br>
-    ${delivery}`;
+        <img src="${pharmacyImage}" width="250" height="144">
+        <a href="pharmacy_page.html?name=${encodeURIComponent(pharmacy.name)}"><h5>${pharmacy.name}</h5></a>
+        <br>
+        ${pharmacy.address}
+        <br>
+        <br>
+        ${delivery}    ${isOpenSpan}
+    `;
     
     marker.bindPopup(popupContent);
     marker.pharmacyData = pharmacy; 
@@ -205,6 +220,12 @@ function generateButton() {
             <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" name="item" role="switch" id="deliveryCheckbox"  value="Yes">
                 <label class="form-check-label" for="deliveryCheckbox"><i class="fa fa-motorcycle" aria-hidden="true"></i> Delivery available</label>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" name="item" role="switch" id="hoursCheckbox"  value="Yes">
+                <label class="form-check-label" for="deliveryCheckbox"><i class="fa fa-clock-o" aria-hidden="true"></i> Open now</label>
             </div>
         </div>
     </div>
@@ -287,10 +308,18 @@ function zoomToRegion(region) {
 function filterMarkers() {
     const deliveryChecked = document.getElementById('deliveryCheckbox').checked;
 
-    markers.forEach(marker => {
-        const hasDelivery = marker.pharmacyData.delivery_available === 'Yes';
+    const hoursChecked = document.getElementById('hoursCheckbox').checked;
 
-        if (!deliveryChecked || hasDelivery) {
+    markers.forEach(marker => {
+        const pharmacy = marker.pharmacyData;
+
+        const hasDelivery = pharmacy.delivery_available === 'Yes';
+        const isOpen = isPharmacyOpen(pharmacy);
+
+        const showByDelivery = !deliveryChecked || hasDelivery;
+        const showByHours = !hoursChecked || isOpen;
+
+        if (showByDelivery && showByHours) {
             marker.addTo(map);
         } else {
             map.removeLayer(marker);
