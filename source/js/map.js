@@ -168,7 +168,7 @@ function addMarker(pharmacy) {
         if (openStatus === true) {
             isOpenSpan = `<span class="text-success"><b><i class="fa fa-clock-o" aria-hidden="true"></i> Open now</b></span>`;
         } else if (openStatus === false) {
-            isOpenSpan = `<span class="text-danger"><b><i class="fa fa-clock-0" aria-hidden="true"></i> Closed</b></span>`;
+            isOpenSpan = `<span class="text-danger"><b><i class="fa fa-clock-o" aria-hidden="true"></i> Closed</b></span>`;
         }
         // if openStatus is null, it will show nothing
     }
