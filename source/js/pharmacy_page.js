@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (openStatus === false) {
             isOpenSpan = `
             <div class="col">
-                <span class="text-danger"><i class="fa fa-clock-o" aria-hidden="true"></i> Open now</span>
+                <span class="text-danger"><i class="fa fa-clock-o" aria-hidden="true"></i> Closed</span>
             </div>`;
         }
         // if openStatus is null, it will show nothing
