@@ -162,13 +162,13 @@ function addMarker(pharmacy) {
     var isOpenSpan = "";  
 
     if (pharmacy.open24_7 === true) {
-        isOpenSpan = `<span class="text-success"><i class="fa fa-clock-o" aria-hidden="true"></i> Open 24/7</span>`;
+        isOpenSpan = `<span class="text-success"><b><i class="fa fa-clock-o" aria-hidden="true"></i> Open 24/7</b></span>`;
     } else {
         const openStatus = isPharmacyOpen(pharmacy);
         if (openStatus === true) {
-            isOpenSpan = `<span class="text-success"><i class="fa fa-clock-o" aria-hidden="true"></i> Open now</span>`;
+            isOpenSpan = `<span class="text-success"><b><i class="fa fa-clock-o" aria-hidden="true"></i> Open now</b></span>`;
         } else if (openStatus === false) {
-            isOpenSpan = `<span class="textdanger"><i class="fa fa-clock-0" aria-hidden="true"></i> Closed</span>`;
+            isOpenSpan = `<span class="text-danger"><b><i class="fa fa-clock-o" aria-hidden="true"></i> Closed</b></span>`;
         }
         // if openStatus is null, it will show nothing
     }
@@ -236,6 +236,7 @@ function generateButton() {
     document.getElementById("region").addEventListener("change", handleRegionChange);
     document.getElementById("district-wrapper").addEventListener("change", handleDistrictChange);
     document.getElementById('deliveryCheckbox').addEventListener('change', filterMarkers);
+    document.getElementById('hoursCheckbox').addEventListener('change', filterMarkers);
 
 }
 
